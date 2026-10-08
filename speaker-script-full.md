@@ -339,8 +339,7 @@
 > *Berakit-rakit ke hulu, berenang-renang ke Maluku...*  
 > *Dia sudah berlalu, dan masa lalu jelas bukan lagi urusanku.*  
 > 
-> Tapi dari koding dan hidup, saya belajar satu hal:  
-> Sama seperti *codebase* yang rusak, kita enggak bisa meng-undo atau nge-rewrite masa lalu. Tapi kita selalu punya kendali untuk ngebangun *version* diri kita yang lebih baik di *production* berikutnya.  
+> Sama seperti coding, hidup ga menuntut kita selalu benar. Yang penting adalah terus memperbaiki bug, belajar dari error, dan tetap melanjutkan prosesnya.  
 > 
 > Setiap cerita ada titiknya, setiap pertemuan pasti ada akhirnya.  
 > Hari ini izinkan saya untuk menutup sesi ini dengan satu kata: **Terima Kasih!**  
