@@ -1,0 +1,151 @@
+/* ===== Variabel tema (slide 22) ===== */
+:root {
+  --biru: #1F4FD8;
+  --kuning: #FFC83D;
+  --gelap: #0E1B3D;
+  --bg: #FAF8F4;
+  --text: #0E1B3D;
+  --kartu: #FFFFFF;
+}
+
+/* ===== Reset kotak (slide 23) ===== */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+/* ===== Header dan nav (slide 20, 22, 24) ===== */
+header {
+  background: var(--gelap);
+  color: #FFFFFF;
+  padding: 32px 24px;
+  text-align: center;
+}
+
+h1 {
+  color: var(--kuning);
+  font-size: clamp(28px, 6vw, 48px);
+  margin: 0;
+}
+
+header p {
+  margin: 8px 0 20px;
+}
+
+nav {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+nav a {
+  color: #FFFFFF;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+nav a:hover {
+  background: var(--biru);
+}
+
+/* ===== Isi halaman ===== */
+main {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+h2 {
+  color: var(--biru);
+}
+
+section {
+  margin-bottom: 32px;
+}
+
+img {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* ===== Skill (flexbox, slide 24) ===== */
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  list-style: none;
+  padding: 0;
+}
+
+.skills li {
+  background: #DCE6FF;
+  color: var(--biru);
+  font-weight: 600;
+  padding: 6px 16px;
+  border-radius: 999px;
+}
+
+/* ===== Kartu project (slide 21, 23, 25) ===== */
+.projects {
+  display: grid;
+  gap: 16px;
+}
+
+.card {
+  background: var(--kartu);
+  border: 1px solid #E3DFD6;
+  border-radius: 16px;
+  padding: 24px;
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+.card h3 {
+  margin-top: 0;
+}
+
+footer {
+  text-align: center;
+  padding: 24px;
+  color: #5B6478;
+}
+
+/* ===== Responsive (slide 25) ===== */
+@media (min-width: 768px) {
+  .projects {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ===== Bonus: dark mode ===== */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0A1330;
+    --text: #F4F6FB;
+    --kartu: #17285A;
+  }
+  h2 {
+    color: var(--kuning);
+  }
+  .card {
+    border-color: #2A3C6E;
+  }
+  footer {
+    color: #A9B6D6;
+  }
+}
