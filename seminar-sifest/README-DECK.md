@@ -1,6 +1,6 @@
 # SI FEST 2026 · Sesi 1 — Deck Workshop Web
 
-**Unlock Your Potential Through Web Technology** · 33 slide · 16:9 · 230 menit (07.30 – 11.20)
+**Unlock Your Potential Through Web Technology** · 34 slide · 16:9 · 230 menit (07.30 – 11.20)
 
 ## File
 
@@ -8,9 +8,11 @@
 |---|---|
 | `SI-Fest-2026-Sesi1.pptx` | Deck utama. Font Plus Jakarta Sans + JetBrains Mono |
 | `SI-Fest-2026-Sesi1-SafeFonts.pptx` | Identik, font Calibri + Consolas. **Cadangan untuk PC Lab** |
-| `PRESENTATION-BLUEPRINT.md` | Tabel 33 slide: judul, bagian, durasi, jenis (teori / ketik bareng / praktik) |
+| `PRESENTATION-BLUEPRINT.md` | Tabel 34 slide: judul, bagian, durasi, jenis (teori / ketik bareng / praktik) |
+| `level-up/` | **Jalur lanjutan**: `modul/` (6 modul Markdown untuk LMS) dan `landing-kelas/` (solusi proyek) |
 | `starter-kit/` | Solusi akhir `index.html`, `style.css`, `img/foto.jpg` untuk acuan pemateri |
 | `generator/` | Source code (Node + pptxgenjs). `node generator/build.js` membangun ulang |
+| `generator/assets/ill/` | Ilustrasi (PNG) yang dipakai di slide |
 | `PROMPT-EXECUTOR-SESI1.md` | Prompt yang dipakai untuk membuat deck ini |
 
 Speaker notes ada di setiap slide (View → Notes Page / Presenter View): waktu, naskah, aksi, jebakan umum. Slide checkpoint juga memuat **solusi kode**.
@@ -35,7 +37,11 @@ Speaker notes ada di setiap slide (View → Notes Page / Presenter View): waktu,
 | 08.20 – 09.20 | HTML + Checkpoint 1 | 11–17 |
 | 09.20 – 09.35 | Istirahat | |
 | 09.35 – 10.35 | CSS + Checkpoint 2 | 18–26 |
-| 10.35 – 11.20 | Debugging, AI tutor, sprint, publish, showcase, penutup | 27–33 |
+| 10.35 – 11.20 | Debugging, AI tutor, sprint (+ slide opsional Level Up), publish, showcase, penutup | 27–34 |
+
+## Ilustrasi
+
+Ilustrasi berasal dari koleksi [unDraw](https://undraw.co) (lisensi bebas pakai, tanpa atribusi) lewat mirror MIT [cuuupid/undraw-illustrations](https://github.com/cuuupid/undraw-illustrations). Warna utamanya diganti ke biru SI Fest. Untuk mengunduh ulang dan merender: `python generator/fetch-assets.py` lalu `node generator/process-assets.js`.
 
 ## Cara mengubah deck
 
@@ -43,7 +49,7 @@ Speaker notes ada di setiap slide (View → Notes Page / Presenter View): waktu,
 |---|---|
 | `generator/lib.js` | Palet, font, primitif |
 | `generator/kit.js` | Komponen: frame, code box, mock browser, checkpoint |
-| `generator/slides1.js` · `slides2.js` · `slides3.js` | Slide 1–17 · 18–26 · 27–33 |
+| `generator/slides1.js` · `slides2.js` · `slides3.js` | Slide 1–17 · 18–26 · 27–34 |
 | `generator/emit-pptx.js` · `emit-html.js` | Pembuat PPTX dan preview HTML |
 
 ```bash

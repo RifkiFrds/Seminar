@@ -9,7 +9,9 @@ function emit(P, outFile, fonts) {
   const pages = P.map((s) => {
     let h = `<div class="slide" style="background:#${s.bg}">`;
     for (const it of s.items) {
-      if (it.t === 'rect') {
+      if (it.t === 'img') {
+        h += `<img src="data:image/png;base64,${fs.readFileSync(it.path).toString('base64')}" style="position:absolute;left:${i2p(it.x)}px;top:${i2p(it.y)}px;width:${i2p(it.w)}px;height:${i2p(it.h)}px">`;
+      } else if (it.t === 'rect') {
         const br = it.shape === 'ellipse' ? '50%' : it.shape === 'roundRect' ? i2p(Math.min(it.r, Math.min(it.w, it.h) / 2)) + 'px' : '0';
         const bd = it.line ? `border:${it.line.width}px ${it.line.dash ? 'dashed' : 'solid'} #${it.line.color};` : '';
         const sh = it.sh ? (it.sh === 'dark' ? 'box-shadow:0 3px 14px rgba(0,0,0,.4);' : 'box-shadow:0 3px 14px rgba(122,130,153,.25);') : '';

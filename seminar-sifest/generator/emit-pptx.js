@@ -15,7 +15,9 @@ function emit(P, outFile, fonts) {
     const sl = pres.addSlide({ sectionTitle: s.section });
     sl.background = { color: s.bg };
     for (const it of s.items) {
-      if (it.t === 'rect') {
+      if (it.t === 'img') {
+        sl.addImage({ path: it.path, x: it.x, y: it.y, w: it.w, h: it.h });
+      } else if (it.t === 'rect') {
         const o = { x: it.x, y: it.y, w: it.w, h: it.h,
           fill: it.fill === 'none' ? { type: 'none' } : (it.op != null ? { color: it.fill, transparency: Math.round((1 - it.op) * 100) } : { color: it.fill }) };
         o.line = it.line ? { color: it.line.color, width: it.line.width, dashType: it.line.dash ? 'dash' : 'solid' } : { type: 'none' };

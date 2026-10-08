@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CodeKelas: belajar coding dari nol sampai punya website sendiri.">
+  <title>CodeKelas | Belajar Coding dari Nol</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="logo" href="#">CodeKelas</a>
+    <nav aria-label="Navigasi utama">
+      <a href="#fitur">Fitur</a>
+      <a href="#kelas">Kelas</a>
+      <a href="#mulai">Mulai</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-text">
+        <p class="eyebrow">Belajar coding, versi ramah pemula</p>
+        <h1>Dari nol sampai punya website sendiri</h1>
+        <p class="lead">Kelas singkat, praktik langsung, dan hasil nyata yang bisa kamu bagikan ke teman.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#kelas">Lihat Kelas</a>
+          <a class="btn btn-ghost" href="#fitur">Pelajari Dulu</a>
+        </div>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="mock">
+          <div class="mock-dots"><span></span><span></span><span></span></div>
+          <div class="mock-lines"><span></span><span></span><span></span><span></span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="fitur" class="section">
+      <h2>Kenapa CodeKelas?</h2>
+      <div class="grid">
+        <article class="card" style="--i: 0">
+          <h3>Praktik dulu</h3>
+          <p>Setiap materi langsung kamu ketik sendiri, bukan hanya dibaca.</p>
+        </article>
+        <article class="card" style="--i: 1">
+          <h3>Langkah kecil</h3>
+          <p>Satu konsep per modul, jadi tidak pernah terasa terlalu berat.</p>
+        </article>
+        <article class="card" style="--i: 2">
+          <h3>Hasil nyata</h3>
+          <p>Di akhir, kamu punya website yang tayang dan punya link sendiri.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="kelas" class="section">
+      <h2>Kelas Populer</h2>
+      <div class="grid">
+        <article class="card" style="--i: 0">
+          <span class="badge">Pemula</span>
+          <h3>HTML Dasar</h3>
+          <p>Susun kerangka halaman pertamamu.</p>
+          <div class="bar" style="--progress: 80%"><span></span></div>
+        </article>
+        <article class="card" style="--i: 1">
+          <span class="badge">Pemula</span>
+          <h3>CSS Modern</h3>
+          <p>Warna, layout, dan tampilan yang rapi.</p>
+          <div class="bar" style="--progress: 45%"><span></span></div>
+        </article>
+        <article class="card" style="--i: 2">
+          <span class="badge">Menengah</span>
+          <h3>JavaScript Dasar</h3>
+          <p>Bikin halamanmu bisa bereaksi.</p>
+          <div class="bar" style="--progress: 15%"><span></span></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="mulai" class="cta">
+      <h2>Siap bikin website pertamamu?</h2>
+      <p>Mulai dari satu kelas kecil hari ini.</p>
+      <a class="btn btn-primary" href="#kelas">Mulai Sekarang</a>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 CodeKelas. Dibuat saat SI Fest 2026.</p>
+  </footer>
+</body>
+</html>

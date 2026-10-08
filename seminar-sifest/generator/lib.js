@@ -25,6 +25,19 @@ function slide(meta) { CUR = { ...meta, items: [], n: P.length + 1 }; P.push(CUR
 const push = (o) => { CUR.items.push(o); return o; };
 const notes = (o) => { CUR.notes = o; };
 
+const fs = require('fs');
+const path = require('path');
+const ILL = path.join(__dirname, 'assets', 'ill');
+// illustration helper: keeps aspect ratio. pass w OR h (plus x,y). returns placed box.
+function pic(name, o) {
+  const file = path.join(ILL, name + '.png');
+  const b = fs.readFileSync(file);
+  const ar = b.readUInt32BE(16) / b.readUInt32BE(20);
+  const w = o.w || o.h * ar, h = o.h || o.w / ar;
+  push({ t: 'img', path: file, x: o.x, y: o.y, w, h });
+  return { x: o.x, y: o.y, w, h };
+}
+
 const rect = (o) => push({ t: 'rect', shape: 'rect', ...o });
 const rr = (o) => push({ t: 'rect', shape: 'roundRect', r: 0.12, ...o });
 const ell = (o) => push({ t: 'rect', shape: 'ellipse', ...o });
@@ -33,4 +46,4 @@ const text = (o) => push({ t: 'text', font: 'body', size: 16, color: C.txt, alig
 const head = (o) => text({ font: 'head', bold: true, ...o });
 const mono = (o) => text({ font: 'mono', wrap: false, ...o });
 
-module.exports = { W, H, C, P, slide, push, notes, rect, rr, ell, line, text, head, mono, FONTS, MONO_W, SAFE };
+module.exports = { pic, W, H, C, P, slide, push, notes, rect, rr, ell, line, text, head, mono, FONTS, MONO_W, SAFE };

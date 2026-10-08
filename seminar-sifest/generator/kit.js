@@ -5,17 +5,13 @@ const CHAR = L.MONO_W;                   // mono advance, em
 const pitchOf = (size) => size * 1.45 / 72;
 
 // ── page frame ─────────────────────────────────────────────────────────────
+// Bersih: hanya nomor halaman di kanan bawah. Tidak ada footer judul, tidak ada label kecil di atas judul.
 function page(o) {
   const dark = o.dark;
   const s = slide({ name: o.name, section: o.section, menit: o.menit, jenis: o.jenis, title: o.title || o.name, bg: o.bg || (dark ? C.navy : C.paper) });
-  const mute = dark ? '6F7FA8' : '9AA1B2';
-  text({ x: M, y: 7.02, w: 8, h: 0.2, size: 10, font: 'head', bold: true, charSpacing: 1.4, color: mute, valign: 'middle',
-         text: 'SI FEST 2026  ·  SESI 1  ·  UNLOCK YOUR POTENTIAL THROUGH WEB TECHNOLOGY' });
-  text({ x: W - M - 1, y: 7.02, w: 1, h: 0.2, size: 10, font: 'head', bold: true, align: 'right', valign: 'middle', color: mute,
-         text: String(s.n).padStart(2, '0') });
-  if (o.kicker) text({ x: M, y: 0.55, w: 9, h: 0.26, size: 12, font: 'head', bold: true, charSpacing: 2.2, valign: 'middle',
-                       color: dark ? C.yellow : C.blue, text: o.kicker.toUpperCase() });
-  if (o.title && !o.noTitle) head({ x: M, y: o.titleY || 0.88, w: o.titleW || 11.7, h: o.titleH || 1.1, size: o.titleSize || 38, lh: 1.08,
+  text({ x: W - M - 1, y: 7.0, w: 1, h: 0.22, size: 11, font: 'head', bold: true, align: 'right', valign: 'middle',
+         color: dark ? '6F7FA8' : '9AA1B2', text: String(s.n) });
+  if (o.title && !o.noTitle) head({ x: M, y: o.titleY || 0.75, w: o.titleW || 11.7, h: o.titleH || 1.0, size: o.titleSize || 40, lh: 1.08,
                       color: dark ? C.inv : C.navy, text: o.title });
   return s;
 }
@@ -162,4 +158,4 @@ function tree(x, y, rows, o) {
 function checkbox(x, y, d, color) { rr({ x, y, w: d, h: d, r: d * 0.22, fill: 'none', line: { color: color || C.blue, width: 1.75 } }); }
 function arrow(x, y, w, h, color) { line({ x, y, w, h, color: color || C.blue, width: 2, arrow: true }); }
 
-module.exports = { M, page, chip, checkpoint, timePill, codeBox, browser, plainPage, styledPage, tree, checkbox, arrow, pitchOf, CHAR };
+module.exports = { pic: L.pic, M, page, chip, checkpoint, timePill, codeBox, browser, plainPage, styledPage, tree, checkbox, arrow, pitchOf, CHAR };

@@ -1,0 +1,314 @@
+/* ===== 1. Design tokens ===== */
+:root {
+  --biru: #1F4FD8;
+  --kuning: #FFC83D;
+  --gelap: #0E1B3D;
+  --bg: #FAF8F4;
+  --surface: #FFFFFF;
+  --text: #0E1B3D;
+  --muted: #5B6478;
+  --border: #E3DFD6;
+  --radius: 16px;
+  --s1: 8px;
+  --s2: 16px;
+  --s3: 24px;
+  --s4: 40px;
+  --s5: 72px;
+  --shadow: 0 8px 24px rgba(14, 27, 61, 0.08);
+  color-scheme: light;
+}
+
+/* ===== 2. Reset dan dasar ===== */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+h1, h2, h3 {
+  line-height: 1.15;
+  margin: 0 0 var(--s2);
+}
+
+h1 {
+  font-size: clamp(2rem, 5vw + 1rem, 3.5rem);
+}
+
+h2 {
+  font-size: clamp(1.5rem, 3vw + 0.75rem, 2.25rem);
+}
+
+p {
+  margin: 0 0 var(--s2);
+}
+
+a {
+  color: inherit;
+}
+
+/* ===== 3. Layout: Flexbox dan Grid ===== */
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--s2);
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: var(--s2) var(--s3);
+}
+
+.logo {
+  font-weight: 800;
+  font-size: 1.25rem;
+  text-decoration: none;
+}
+
+.site-header nav {
+  display: flex;
+  gap: var(--s3);
+}
+
+.site-header nav a {
+  color: var(--muted);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.site-header nav a:hover {
+  color: var(--biru);
+}
+
+main {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 var(--s3);
+}
+
+.hero {
+  display: grid;
+  align-items: center;
+  gap: var(--s4);
+  padding: var(--s5) 0 var(--s4);
+}
+
+.section {
+  padding-top: var(--s5);
+}
+
+.grid {
+  display: grid;
+  gap: var(--s3);
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+/* ===== 4. Komponen dan micro-interaction ===== */
+.eyebrow {
+  color: var(--biru);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.lead {
+  max-width: 52ch;
+  color: var(--muted);
+  font-size: 1.125rem;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s2);
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 24px;
+  border-radius: 999px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.btn:focus-visible {
+  outline: 3px solid var(--kuning);
+  outline-offset: 3px;
+}
+
+.btn-primary {
+  background: var(--biru);
+  color: #FFFFFF;
+  box-shadow: var(--shadow);
+}
+
+.btn-ghost {
+  border: 2px solid var(--border);
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--s3);
+  box-shadow: var(--shadow);
+  transition: transform 0.2s;
+  animation: muncul 0.6s both;
+  animation-delay: calc(var(--i) * 120ms);
+}
+
+.card:hover {
+  transform: translateY(-6px);
+}
+
+.badge {
+  display: inline-block;
+  margin-bottom: var(--s2);
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: var(--kuning);
+  color: var(--gelap);
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+
+.bar {
+  height: 8px;
+  border-radius: 999px;
+  background: var(--border);
+  overflow: hidden;
+}
+
+.bar span {
+  display: block;
+  height: 100%;
+  width: var(--progress, 0%);
+  background: var(--biru);
+}
+
+.mock {
+  padding: var(--s3);
+  border-radius: var(--radius);
+  background: var(--gelap);
+  box-shadow: var(--shadow);
+  animation: melayang 6s ease-in-out infinite;
+}
+
+.mock-dots span {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin-right: 6px;
+  border-radius: 50%;
+  background: #E63946;
+}
+
+.mock-dots span:nth-child(2) {
+  background: var(--kuning);
+}
+
+.mock-dots span:nth-child(3) {
+  background: #1E9E68;
+}
+
+.mock-lines span {
+  display: block;
+  height: 10px;
+  margin-top: 14px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.mock-lines span:nth-child(1) { width: 70%; }
+.mock-lines span:nth-child(2) { width: 90%; }
+.mock-lines span:nth-child(3) { width: 55%; }
+.mock-lines span:nth-child(4) { width: 80%; }
+
+.cta {
+  margin: var(--s5) 0;
+  padding: var(--s4) var(--s3);
+  border-radius: calc(var(--radius) * 1.5);
+  background: var(--gelap);
+  color: #FFFFFF;
+  text-align: center;
+}
+
+footer {
+  padding: var(--s4) var(--s3);
+  color: var(--muted);
+  text-align: center;
+}
+
+@keyframes muncul {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes melayang {
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* ===== 5. Responsive (mobile-first) ===== */
+@media (min-width: 768px) {
+  .hero {
+    grid-template-columns: 1.1fr 0.9fr;
+  }
+}
+
+/* ===== 6. Dark mode dan aksesibilitas gerak ===== */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0A1330;
+    --surface: #17285A;
+    --text: #F4F6FB;
+    --muted: #A9B6D6;
+    --border: #2A3C6E;
+    --shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    color-scheme: dark;
+  }
+
+  .eyebrow,
+  .site-header nav a:hover {
+    color: var(--kuning);
+  }
+
+  .btn-primary {
+    background: var(--kuning);
+    color: var(--gelap);
+  }
+
+  .cta {
+    background: var(--biru);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
