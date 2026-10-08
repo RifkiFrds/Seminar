@@ -1,0 +1,366 @@
+/* Dirakit otomatis dari blok kode di modul 2-5 (urutan kemunculan). */
+
+/* modul-2-design-tokens.md */
+:root {
+  --utama: #C2410C;
+  --aksen: #FFC83D;
+  --gelap: #1F1A17;
+  --bg: #FAF6F0;
+  --surface: #FFFFFF;
+  --text: #1F1A17;
+  --muted: #6B625A;
+  --border: #E8E0D5;
+}
+
+/* modul-2-design-tokens.md */
+.eyebrow {
+  color: var(--utama);
+}
+
+/* modul-2-design-tokens.md */
+:root {
+  --radius: 16px;
+  --s1: 8px;
+  --s2: 16px;
+  --s3: 24px;
+  --s4: 40px;
+  --s5: 72px;
+  --shadow: 0 8px 24px rgba(31, 26, 23, 0.1);
+  color-scheme: light;
+}
+
+/* modul-2-design-tokens.md */
+body {
+  margin: 0;
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+/* modul-2-design-tokens.md */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+}
+
+/* modul-2-design-tokens.md */
+h1, h2, h3 {
+  line-height: 1.15;
+  margin: 0 0 var(--s2);
+}
+
+h1 {
+  font-size: clamp(2rem, 5vw + 1rem, 3.5rem);
+}
+
+h2 {
+  font-size: clamp(1.5rem, 3vw + 0.75rem, 2.25rem);
+}
+
+p {
+  margin: 0 0 var(--s2);
+}
+
+/* modul-3-layout-flexbox-grid.md */
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--s2);
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: var(--s2) var(--s3);
+}
+
+.logo {
+  font-weight: 800;
+  font-size: 1.25rem;
+  text-decoration: none;
+}
+
+.site-header nav {
+  display: flex;
+  gap: var(--s3);
+}
+
+.site-header nav a {
+  color: var(--muted);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.site-header nav a:hover {
+  color: var(--utama);
+}
+
+/* modul-3-layout-flexbox-grid.md */
+main {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 var(--s3);
+}
+
+.hero {
+  display: grid;
+  align-items: center;
+  gap: var(--s4);
+  padding: var(--s5) 0 var(--s4);
+}
+
+.hero-img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.section {
+  padding-top: var(--s5);
+}
+
+/* modul-3-layout-flexbox-grid.md */
+.grid {
+  display: grid;
+  gap: var(--s3);
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+/* modul-4-komponen-micro-interaction.md */
+.btn {
+  display: inline-block;
+  padding: 12px 24px;
+  border-radius: 999px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-primary {
+  background: var(--utama);
+  color: #FFFFFF;
+  box-shadow: var(--shadow);
+}
+
+.btn-ghost {
+  border: 2px solid var(--border);
+}
+
+/* modul-4-komponen-micro-interaction.md */
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+/* modul-4-komponen-micro-interaction.md */
+.btn:focus-visible {
+  outline: 3px solid var(--aksen);
+  outline-offset: 3px;
+}
+
+/* modul-4-komponen-micro-interaction.md */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--s3);
+  box-shadow: var(--shadow);
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+}
+
+.badge {
+  display: inline-block;
+  margin: var(--s2) 0 var(--s1);
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: var(--aksen);
+  color: var(--gelap);
+  font-size: 0.75rem;
+  font-weight: 800;
+}
+
+.price {
+  font-size: 1.25rem;
+  font-weight: 800;
+}
+
+.price s {
+  margin-left: var(--s1);
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 400;
+}
+
+/* modul-4-komponen-micro-interaction.md */
+.thumb {
+  overflow: hidden;
+  border-radius: calc(var(--radius) - 4px);
+}
+
+.thumb img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.product:hover .thumb img {
+  transform: scale(1.05);
+}
+
+/* modul-4-komponen-micro-interaction.md */
+.bar {
+  height: 8px;
+  border-radius: 999px;
+  background: var(--border);
+  overflow: hidden;
+}
+
+.bar span {
+  display: block;
+  height: 100%;
+  width: var(--progress, 0%);
+  background: var(--utama);
+}
+
+.stok {
+  display: block;
+  margin: var(--s1) 0 var(--s2);
+  color: var(--muted);
+}
+
+/* modul-4-komponen-micro-interaction.md */
+@keyframes muncul {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* modul-4-komponen-micro-interaction.md */
+.card {
+  animation: muncul 0.6s both;
+  animation-delay: calc(var(--i) * 120ms);
+}
+
+/* modul-4-komponen-micro-interaction.md */
+.eyebrow {
+  color: var(--utama);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.lead {
+  max-width: 52ch;
+  color: var(--muted);
+  font-size: 1.125rem;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s2);
+}
+
+/* modul-4-komponen-micro-interaction.md */
+.product .btn {
+  display: block;
+  text-align: center;
+}
+
+.step {
+  display: inline-grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  margin-bottom: var(--s2);
+  border-radius: 50%;
+  background: var(--utama);
+  color: #FFFFFF;
+  font-weight: 800;
+}
+
+/* modul-4-komponen-micro-interaction.md */
+.cta {
+  margin: var(--s5) 0;
+  padding: var(--s4) var(--s3);
+  border-radius: calc(var(--radius) * 1.5);
+  background: var(--gelap);
+  color: #FFFFFF;
+  text-align: center;
+}
+
+footer {
+  padding: var(--s4) var(--s3);
+  color: var(--muted);
+  text-align: center;
+}
+
+/* modul-5-responsive-dark-mode.md */
+@media (min-width: 768px) {
+  .hero {
+    grid-template-columns: 1.1fr 0.9fr;
+  }
+}
+
+/* modul-5-responsive-dark-mode.md */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14110F;
+    --surface: #221D19;
+    --text: #F5EFE8;
+    --muted: #B9AEA2;
+    --border: #3A322B;
+    --shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    color-scheme: dark;
+  }
+}
+
+/* modul-5-responsive-dark-mode.md */
+@media (prefers-color-scheme: dark) {
+  .eyebrow,
+  .site-header nav a:hover {
+    color: var(--aksen);
+  }
+
+  .btn-primary {
+    background: var(--aksen);
+    color: var(--gelap);
+  }
+
+  .cta {
+    background: var(--utama);
+  }
+}
+
+/* modul-5-responsive-dark-mode.md */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}

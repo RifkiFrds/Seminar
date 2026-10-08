@@ -9,7 +9,7 @@
 | `SI-Fest-2026-Sesi1.pptx` | Deck utama. Font Plus Jakarta Sans + JetBrains Mono |
 | `SI-Fest-2026-Sesi1-SafeFonts.pptx` | Identik, font Calibri + Consolas. **Cadangan untuk PC Lab** |
 | `PRESENTATION-BLUEPRINT.md` | Tabel 34 slide: judul, bagian, durasi, jenis (teori / ketik bareng / praktik) |
-| `level-up/` | **Jalur lanjutan**: `modul/` (6 modul Markdown untuk LMS) dan `landing-kelas/` (solusi proyek) |
+| `level-up/` | **Jalur lanjutan**: `modul/` (6 modul Markdown untuk LMS, tema toko online) dan `thriftkita/` (solusi proyek) |
 | `starter-kit/` | Solusi akhir `index.html`, `style.css`, `img/foto.jpg` untuk acuan pemateri |
 | `generator/` | Source code (Node + pptxgenjs). `node generator/build.js` membangun ulang |
 | `generator/assets/ill/` | Ilustrasi (PNG) yang dipakai di slide |

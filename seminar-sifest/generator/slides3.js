@@ -74,7 +74,7 @@ const SEC = 'Proyek & Publish';
 (function () {
   page({ name: 'Level Up — jalur lanjutan', section: SEC, menit: 0, jenis: 'P', title: 'Sudah selesai? Naik level.', titleH: 0.8 });
   text({ x: M, y: 1.55, w: 6, h: 0.3, text: 'Opsional, untuk yang cepat selesai', size: 15, color: C.txt2 });
-  [['6 modul', 'Course "Modern Web Landing Page" di LMS HIMTI'], ['HTML + CSS modern', 'Grid, animasi halus, responsive, dan dark mode'], ['Hasilnya', 'Landing page bergaya startup, lalu kamu publish']].forEach(([a, d], i) => {
+  [['6 modul', 'Course "Modern Web: Toko Online" di LMS HIMTI'], ['HTML + CSS modern', 'Grid, animasi hover, responsive, dan dark mode'], ['Hasilnya', 'Toko thrift online, beli via WhatsApp']].forEach(([a, d], i) => {
     const y = 2.1 + i * 1.05;
     line({ x: M, y, w: 5.9, h: 0, color: C.line });
     text({ x: M, y: y + 0.12, w: 5.9, h: 0.28, text: a, font: 'head', bold: true, size: 14, color: C.blue });
@@ -83,23 +83,22 @@ const SEC = 'Proyek & Publish';
   rr({ x: M, y: 5.4, w: 5.9, h: 0.7, r: 0.14, fill: C.code });
   mono({ x: M + 0.25, y: 5.4, w: 5.5, h: 0.7, text: '[alamat LMS]/course/modern-web', size: 17, color: C.sTxt, valign: 'middle' });
   text({ x: M, y: 6.3, w: 5.9, h: 0.4, text: 'Kerjakan sendiri, modul demi modul.', size: 15, color: C.txt2 });
-  const b = browser(7.5, 1.95, 5.0, 4.75, { url: 'codekelas.netlify.app' });
+  const b = browser(7.5, 1.95, 5.0, 4.75, { url: 'thriftkita.netlify.app' });
   rect({ x: b.x, y: b.y, w: b.w, h: b.h, fill: C.paper });
-  text({ x: b.x + 0.3, y: b.y + 0.15, w: 2, h: 0.3, text: 'CodeKelas', font: 'head', bold: true, size: 13, color: C.navy });
-  text({ x: b.x + 0.3, y: b.y + 0.7, w: b.w - 0.6, h: 0.9, text: 'Dari nol sampai punya website sendiri', font: 'head', bold: true, size: 22, lh: 1.1, color: C.navy });
-  rr({ x: b.x + 0.3, y: b.y + 1.75, w: 1.3, h: 0.36, r: 0.18, fill: C.blue });
-  text({ x: b.x + 0.3, y: b.y + 1.75, w: 1.3, h: 0.36, text: 'Lihat Kelas', font: 'head', bold: true, size: 11, color: C.white, align: 'center', valign: 'middle' });
+  text({ x: b.x + 0.3, y: b.y + 0.15, w: 2, h: 0.3, text: 'ThriftKita', font: 'head', bold: true, size: 13, color: C.navy });
+  text({ x: b.x + 0.3, y: b.y + 0.6, w: b.w - 0.6, h: 0.9, text: 'Gaya keren tanpa bikin kantong bolong', font: 'head', bold: true, size: 21, lh: 1.1, color: C.navy });
+  rr({ x: b.x + 0.3, y: b.y + 1.6, w: 1.5, h: 0.36, r: 0.18, fill: 'C2410C' });
+  text({ x: b.x + 0.3, y: b.y + 1.6, w: 1.5, h: 0.36, text: 'Belanja Sekarang', font: 'head', bold: true, size: 10, color: C.white, align: 'center', valign: 'middle' });
   [0, 1, 2].forEach((i) => {
-    const cw = (b.w - 0.6 - 0.3) / 3, cx = b.x + 0.3 + i * (cw + 0.15), cy = b.y + 2.45;
-    rr({ x: cx, y: cy, w: cw, h: 1.5, r: 0.12, fill: C.white, line: { color: C.line, width: 1 }, sh: 'light' });
-    rr({ x: cx + 0.14, y: cy + 0.15, w: 0.7, h: 0.22, r: 0.11, fill: C.yellow });
-    rect({ x: cx + 0.14, y: cy + 0.55, w: cw - 0.28, h: 0.07, fill: C.line });
-    rect({ x: cx + 0.14, y: cy + 0.72, w: (cw - 0.28) * 0.6, h: 0.07, fill: C.line });
-    rr({ x: cx + 0.14, y: cy + 1.15, w: cw - 0.28, h: 0.1, r: 0.05, fill: C.line });
-    rr({ x: cx + 0.14, y: cy + 1.15, w: (cw - 0.28) * [0.8, 0.45, 0.15][i], h: 0.1, r: 0.05, fill: C.blue });
+    const cw = (b.w - 0.6 - 0.3) / 3, cx = b.x + 0.3 + i * (cw + 0.15), cy = b.y + 2.2;
+    rr({ x: cx, y: cy, w: cw, h: 1.9, r: 0.12, fill: C.white, line: { color: C.line, width: 1 }, sh: 'light' });
+    rr({ x: cx + 0.12, y: cy + 0.12, w: cw - 0.24, h: 0.8, r: 0.08, fill: ['DCE6FF', 'E8E0D5', 'FFE3B0'][i] });
+    rr({ x: cx + 0.12, y: cy + 1.02, w: 0.7, h: 0.2, r: 0.1, fill: C.yellow });
+    rect({ x: cx + 0.12, y: cy + 1.32, w: cw - 0.24, h: 0.07, fill: C.line });
+    rr({ x: cx + 0.12, y: cy + 1.5, w: cw - 0.24, h: 0.26, r: 0.13, fill: 'C2410C' });
   });
   N('0 menit (opsional, tampilkan saat sprint akhir berjalan)',
-    'Buat kalian yang sudah selesai lebih cepat, ini jalur lanjutannya. Di LMS HIMTI ada course Modern Web Landing Page: enam modul, murni HTML dan CSS modern. Kalian akan membuat landing page bergaya startup dengan grid, animasi halus, responsive, dan dark mode. Kerjakan sendiri, satu modul demi satu modul.',
+    'Buat kalian yang sudah selesai lebih cepat, ini jalur lanjutannya. Di LMS HIMTI ada course Modern Web: Toko Online, enam modul, murni HTML dan CSS modern. Kalian akan membuat toko thrift online dengan grid produk, animasi hover, responsive, dark mode, dan tombol beli lewat WhatsApp. Kerjakan sendiri, satu modul demi satu modul.',
     'Tampilkan slide ini saat siswa mengerjakan sprint akhir, atau setelah ada yang selesai lebih cepat. Siswa yang belum selesai tetap fokus ke profilnya. Ganti [alamat LMS] dengan alamat LMS yang sebenarnya sebelum acara.',
     'Siswa yang belum selesai merasa tertinggal melihat teman melanjutkan. Tegaskan: jalur ini opsional dan boleh dikerjakan di rumah. Pastikan course sudah dipublikasikan di LMS (isAvailable true) dan siswa punya akses sebelum acara.');
 })();

@@ -1,6 +1,8 @@
 # MODUL 5: Responsive & Dark Mode
 
-Halo teman-teman! Sebentar lagi proyek kita selesai. Di modul ini kita membuat landing page nyaman dibuka di **semua ukuran layar**, dan menambahkan fitur yang sedang digemari: **dark mode otomatis**. Kabar baiknya, karena kita sudah memakai design tokens sejak Modul 2, dark mode hanya butuh belasan baris kode.
+Halo teman-teman! Sebentar lagi toko kita selesai. Di modul ini kita membuat toko nyaman dibuka di **semua ukuran layar**, dan menambahkan fitur yang sedang digemari: **dark mode otomatis**. Kabar baiknya, karena kita sudah memakai design tokens sejak Modul 2, dark mode hanya butuh belasan baris kode.
+
+Ini penting sekali untuk toko online: sebagian besar pembeli belanja lewat HP, sering malam hari di tempat tidur. Toko yang nyaman di HP dan tidak menyilaukan mata akan lebih disukai.
 
 ---
 
@@ -12,7 +14,7 @@ Setelah menyelesaikan modul ini, saya harap teman-teman bisa:
 3. Menguji tampilan HP dan tablet memakai DevTools.
 4. Membuat dark mode otomatis dengan `prefers-color-scheme`.
 5. Menghormati pengguna yang tidak nyaman dengan animasi lewat `prefers-reduced-motion`.
-6. **Goal Akhir:** Landing page CodeKelas responsif di semua ukuran dan otomatis menyesuaikan tema perangkat.
+6. **Goal Akhir:** Toko ThriftKita responsif di semua ukuran dan otomatis menyesuaikan tema perangkat.
 
 ---
 
@@ -20,9 +22,9 @@ Setelah menyelesaikan modul ini, saya harap teman-teman bisa:
 
 ### 5.1 Mobile-First: Mulai dari Layar Kecil
 
-Lebih dari separuh pengunjung website membuka dari HP. Karena itu kita menulis gaya **untuk layar kecil lebih dulu**, lalu menambahkan aturan khusus saat layar melebar.
+Lebih dari separuh pembeli online membuka toko dari HP. Karena itu kita menulis gaya **untuk layar kecil lebih dulu**, lalu menambahkan aturan khusus saat layar melebar.
 
-Ingat `.hero` di Modul 3? Tanpa pembagian kolom, teks dan ilustrasi bertumpuk di HP. Itulah tampilan dasar kita. Sekarang kita tambahkan perubahan untuk layar yang lebih lebar:
+Ingat `.hero` di Modul 3? Tanpa pembagian kolom, teks dan foto bertumpuk di HP. Itulah tampilan dasar kita. Sekarang kita tambahkan perubahan untuk layar yang lebih lebar:
 
 ```css
 @media (min-width: 768px) {
@@ -39,7 +41,7 @@ Artinya: **jika lebar layar minimal 768px**, bagi hero menjadi dua kolom dengan 
 | di bawah 768px | HP | 1 kolom (bertumpuk) |
 | 768px ke atas | Tablet dan laptop | 2 kolom |
 
-> Tips Dosen: Perhatikan bahwa grid kartu `.grid` dari Modul 3 **tidak butuh media query sama sekali** berkat `auto-fit` dan `minmax`. Pilih alat paling sederhana yang bisa menyelesaikan masalah. Media query dipakai hanya jika memang perlu.
+> Tips Dosen: Perhatikan bahwa deretan produk `.grid` dari Modul 3 **tidak butuh media query sama sekali** berkat `auto-fit` dan `minmax`. Pilih alat paling sederhana yang bisa menyelesaikan masalah. Media query dipakai hanya jika memang perlu.
 
 ### 5.2 Menguji di DevTools
 
@@ -47,7 +49,7 @@ Jangan menebak-nebak, **lihat langsung**:
 1. Tekan `F12` untuk membuka DevTools.
 2. Tekan `Ctrl + Shift + M` untuk masuk ke mode perangkat.
 3. Pilih ukuran seperti iPhone atau iPad, atau tarik lebar layar secara bebas.
-4. Perhatikan titik kapan hero berubah dari satu menjadi dua kolom.
+4. Perhatikan titik kapan hero berubah dari satu menjadi dua kolom, dan kapan produk berubah dari tiga, dua, hingga satu kolom.
 
 Pastikan di `<head>` ada tag ini (sudah kita tulis di Modul 1). Tanpa tag ini, HP akan menampilkan halaman dalam versi "desktop yang diperkecil":
 
@@ -62,39 +64,39 @@ Browser bisa mendeteksi apakah perangkat pengguna sedang dalam mode gelap lewat 
 ```css
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #0A1330;
-    --surface: #17285A;
-    --text: #F4F6FB;
-    --muted: #A9B6D6;
-    --border: #2A3C6E;
-    --shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    --bg: #14110F;
+    --surface: #221D19;
+    --text: #F5EFE8;
+    --muted: #B9AEA2;
+    --border: #3A322B;
+    --shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
     color-scheme: dark;
   }
 }
 ```
 
-Hanya satu blok, dan **seluruh halaman berubah**: latar, kartu, teks, dan batas. Tidak ada satu pun elemen yang perlu ditulis ulang. Itulah hasil kerja keras di Modul 2.
+Hanya satu blok, dan **seluruh halaman berubah**: latar, kartu produk, teks, dan batas. Tidak ada satu pun elemen yang perlu ditulis ulang. Itulah hasil kerja keras di Modul 2.
 
 `color-scheme: dark` memberi tahu browser agar elemen bawaannya (scrollbar, kolom isian) ikut tampil gelap.
 
 ### 5.4 Merapikan Detail di Mode Gelap
 
-Warna biru `#1F4FD8` kurang terbaca di atas latar gelap. Untuk elemen tertentu kita butuh penyesuaian kecil di dalam blok dark mode yang sama:
+Warna oranye tua `#C2410C` kurang terbaca di atas latar gelap. Untuk elemen tertentu kita butuh penyesuaian kecil di dalam blok dark mode yang sama:
 
 ```css
 @media (prefers-color-scheme: dark) {
   .eyebrow,
   .site-header nav a:hover {
-    color: var(--kuning);
+    color: var(--aksen);
   }
 
   .btn-primary {
-    background: var(--kuning);
+    background: var(--aksen);
     color: var(--gelap);
   }
 
   .cta {
-    background: var(--biru);
+    background: var(--utama);
   }
 }
 ```
@@ -128,15 +130,8 @@ Dengan blok ini, semua animasi buatan kita otomatis mati untuk mereka yang memin
 3. Tambahkan blok dark mode dari bagian **5.3**, lalu gaya tambahan dari bagian **5.4** (gabungkan dalam satu `@media (prefers-color-scheme: dark)`).
 4. Tambahkan blok `prefers-reduced-motion` dari bagian **5.5**.
 5. Uji dark mode memakai salah satu cara di bagian 5.4. Cek apakah ada teks yang sulit dibaca.
-6. **Tantangan:** buat satu variabel baru `--aksen` dengan dua nilai (terang dan gelap), lalu pakai untuk warna `h2`.
+6. **Tantangan:** buat satu variabel baru `--diskon` dengan dua nilai (terang dan gelap), lalu pakai untuk warna badge diskon.
 
 ---
 
-## 📝 Evaluasi Pemahaman
-
-Silakan asah pemahaman kalian dengan menjawab kuis ini:
-1. Apa arti pendekatan mobile-first?
-2. Mengapa dark mode di proyek kita hanya butuh mengganti nilai variabel?
-3. Mengapa kita perlu `prefers-reduced-motion`?
-
-Mantap sekali! Landing page kalian sudah modern dan ramah semua orang. Di **Modul 6**, modul terakhir, kita periksa kualitas proyek, **publikasikan ke internet**, dan merencanakan langkah belajar berikutnya. Sampai jumpa! 🎓
+Mantap sekali! Toko kalian sudah modern dan ramah semua orang. Di **Modul 6**, modul terakhir, kita periksa kualitas proyek, **publikasikan ke internet**, dan merencanakan langkah belajar berikutnya. Sampai jumpa! 🎓

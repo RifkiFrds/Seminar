@@ -1,6 +1,6 @@
 # MODUL 4: Komponen & Micro-interaction
 
-Halo teman-teman! Layout sudah rapi. Sekarang kita buat halaman ini **terasa hidup**. Website modern bukan hanya soal tampilan, tapi juga soal "rasa": tombol yang merespon saat disentuh, kartu yang terangkat halus, dan elemen yang muncul dengan anggun. Detail kecil seperti ini disebut **micro-interaction**.
+Halo teman-teman! Layout sudah rapi. Sekarang kita buat toko ini **terasa hidup**. Website modern bukan hanya soal tampilan, tapi juga soal "rasa": tombol yang merespon saat disentuh, kartu produk yang terangkat halus, dan foto yang sedikit membesar saat disorot. Detail kecil seperti ini disebut **micro-interaction**.
 
 ---
 
@@ -8,12 +8,12 @@ Halo teman-teman! Layout sudah rapi. Sekarang kita buat halaman ini **terasa hid
 
 Setelah menyelesaikan modul ini, saya harap teman-teman bisa:
 1. Membuat komponen tombol dengan beberapa varian (`btn-primary` dan `btn-ghost`).
-2. Membuat kartu dengan border, bayangan, dan radius yang konsisten.
+2. Membuat kartu produk lengkap dengan badge, harga, dan harga coret.
 3. Menambahkan efek `:hover` yang halus memakai `transition` dan `transform`.
 4. Membuat tombol bisa diakses keyboard dengan `:focus-visible`.
 5. Membuat animasi dengan `@keyframes`, termasuk animasi bergantian lewat CSS variable.
-6. Membuat progress bar yang nilainya diatur dari HTML.
-7. **Goal Akhir:** Halaman CodeKelas punya tombol, kartu, badge, progress bar, dan animasi yang halus.
+6. Membuat bar stok yang nilainya diatur dari HTML.
+7. **Goal Akhir:** Toko ThriftKita punya tombol, kartu, badge, harga, bar stok, dan animasi yang halus.
 
 ---
 
@@ -34,7 +34,7 @@ Satu kelas dasar `.btn` untuk bentuk, lalu kelas varian untuk warna:
 }
 
 .btn-primary {
-  background: var(--biru);
+  background: var(--utama);
   color: #FFFFFF;
   box-shadow: var(--shadow);
 }
@@ -66,14 +66,14 @@ Tidak semua orang memakai mouse. Sebagian pengguna menekan `Tab` untuk berpindah
 
 ```css
 .btn:focus-visible {
-  outline: 3px solid var(--kuning);
+  outline: 3px solid var(--aksen);
   outline-offset: 3px;
 }
 ```
 
 Keunggulan `:focus-visible` dibanding `:focus`: garis ini hanya muncul saat fokus datang dari **keyboard**, bukan saat kita mengeklik dengan mouse. Jadi tampilan tetap bersih, tapi tetap ramah aksesibilitas.
 
-### 4.4 Kartu, Badge, dan Progress Bar
+### 4.4 Kartu, Badge, dan Harga
 
 ```css
 .card {
@@ -91,17 +91,59 @@ Keunggulan `:focus-visible` dibanding `:focus`: garis ini hanya muncul saat foku
 
 .badge {
   display: inline-block;
-  margin-bottom: var(--s2);
+  margin: var(--s2) 0 var(--s1);
   padding: 4px 12px;
   border-radius: 999px;
-  background: var(--kuning);
+  background: var(--aksen);
   color: var(--gelap);
   font-size: 0.75rem;
   font-weight: 800;
 }
+
+.price {
+  font-size: 1.25rem;
+  font-weight: 800;
+}
+
+.price s {
+  margin-left: var(--s1);
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 400;
+}
 ```
 
-Sekarang bagian yang paling menarik, **progress bar yang nilainya diatur dari HTML**. Di CSS kita pakai variabel `--progress`, dan di HTML kita isi nilainya langsung di elemen:
+Perhatikan `.price s`: aturan ini hanya berlaku untuk tag `s` (harga coret) **di dalam** `.price`. Harga lama jadi lebih kecil dan abu-abu, sehingga mata pembeli langsung tertuju ke harga diskon.
+
+### 4.5 Foto Produk yang Membesar Saat Disorot
+
+Efek ini sering kita lihat di toko online besar. Ada dua kunci: kotak pembungkus yang **memotong** isi yang meluber (`overflow: hidden`), dan gambar yang **membesar** (`scale`) saat kartunya di-hover:
+
+```css
+.thumb {
+  overflow: hidden;
+  border-radius: calc(var(--radius) - 4px);
+}
+
+.thumb img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.product:hover .thumb img {
+  transform: scale(1.05);
+}
+```
+
+Tanpa `overflow: hidden`, foto yang membesar akan menimpa elemen di sekitarnya. Dengan pembungkus ini, foto hanya membesar di dalam bingkainya.
+
+Selector `.product:hover .thumb img` dibaca: "gambar di dalam `.thumb`, yang ada di dalam `.product`, **saat `.product` di-hover**". Jadi seluruh kartu yang disorot membuat fotonya membesar, bukan hanya saat mouse tepat di atas foto.
+
+### 4.6 Bar Stok yang Nilainya Diatur dari HTML
+
+Kita ingin pembeli tahu stok tinggal sedikit (taktik klasik toko online!). Di CSS kita pakai variabel `--progress`, dan di HTML kita isi nilainya langsung di elemen:
 
 ```css
 .bar {
@@ -115,17 +157,24 @@ Sekarang bagian yang paling menarik, **progress bar yang nilainya diatur dari HT
   display: block;
   height: 100%;
   width: var(--progress, 0%);
-  background: var(--biru);
+  background: var(--utama);
+}
+
+.stok {
+  display: block;
+  margin: var(--s1) 0 var(--s2);
+  color: var(--muted);
 }
 ```
 
 ```html
-<div class="bar" style="--progress: 80%"><span></span></div>
+<div class="bar" style="--progress: 25%"><span></span></div>
+<small class="stok">Sisa 1 pcs</small>
 ```
 
 Nilai `0%` di dalam `var(--progress, 0%)` adalah **nilai cadangan** kalau variabelnya lupa diisi. Hanya dengan mengubah angka di HTML, panjang bar langsung berubah, tanpa menyentuh CSS.
 
-### 4.5 Animasi dengan @keyframes
+### 4.7 Animasi Muncul dengan @keyframes
 
 Kita ingin kartu **muncul sambil naik halus** saat halaman dibuka:
 
@@ -151,43 +200,23 @@ Lalu pasang di `.card`. Tambahkan dua baris di dalam aturan `.card` yang sudah a
 }
 ```
 
-Ingat angka `--i: 0`, `--i: 1`, `--i: 2` yang kita titipkan di HTML pada Modul 1? Sekarang terpakai! `calc(var(--i) * 120ms)` membuat kartu pertama muncul langsung, kartu kedua tertunda 120ms, kartu ketiga 240ms. Hasilnya kartu muncul **bergantian**, efek yang biasanya dibuat dengan JavaScript.
+Ingat angka `--i: 0`, `--i: 1`, `--i: 2` yang kita titipkan di HTML pada Modul 1? Sekarang terpakai! `calc(var(--i) * 120ms)` membuat kartu pertama muncul langsung, kartu kedua tertunda 120ms, kartu ketiga 240ms, dan seterusnya. Hasilnya kartu muncul **bergantian**, efek yang biasanya dibuat dengan JavaScript.
 
 `both` memastikan kartu tetap tersembunyi selama menunggu gilirannya dan tetap tampil setelah animasi selesai.
 
-### 4.6 Animasi Melayang untuk Ilustrasi Hero
-
-```css
-@keyframes melayang {
-  50% {
-    transform: translateY(-10px);
-  }
-}
-
-.mock {
-  padding: var(--s3);
-  border-radius: var(--radius);
-  background: var(--gelap);
-  box-shadow: var(--shadow);
-  animation: melayang 6s ease-in-out infinite;
-}
-```
-
-Perhatikan `@keyframes melayang` hanya menulis titik `50%`. Browser otomatis memakai posisi awal sebagai 0% dan 100%. `infinite` membuatnya berulang selamanya.
-
-> Tips Dosen: Animasi terbaik adalah yang **hampir tidak disadari**. Gerakan 10px dengan durasi 6 detik terasa tenang dan elegan, sedangkan gerakan besar dan cepat justru mengganggu.
+> Tips Dosen: Animasi terbaik adalah yang **hampir tidak disadari**. Gerakan kecil dan singkat terasa elegan, sedangkan gerakan besar dan cepat justru mengganggu pembeli yang sedang memilih barang.
 
 ---
 
 ## 🛠️ Panduan Praktik Terbimbing
 
-1. Pastikan HTML sudah memuat kartu, badge, dan bar seperti pada Modul 1.
-2. Tambahkan CSS komponen dari bagian **4.1** sampai **4.4** ke `style.css`.
+1. Pastikan HTML sudah memuat kartu produk, badge, harga, dan bar seperti pada Modul 1.
+2. Tambahkan CSS komponen dari bagian **4.1** sampai **4.6** ke `style.css`.
 3. Tambahkan juga gaya `.eyebrow`, `.lead`, dan `.actions` agar hero rapi:
 
 ```css
 .eyebrow {
-  color: var(--biru);
+  color: var(--utama);
   font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -207,39 +236,30 @@ Perhatikan `@keyframes melayang` hanya menulis titik `50%`. Browser otomatis mem
 }
 ```
 
-4. Tambahkan animasi `muncul` dan `melayang` dari bagian **4.5** dan **4.6**, lalu lengkapi gaya ilustrasi hero, bagian ajakan (`.cta`), dan `footer`:
+4. Tambahkan gaya tombol beli di dalam kartu produk dan nomor langkah di bagian Cara Beli:
 
 ```css
-.mock-dots span {
-  display: inline-block;
-  width: 12px;
-  height: 12px;
-  margin-right: 6px;
-  border-radius: 50%;
-  background: #E63946;
-}
-
-.mock-dots span:nth-child(2) {
-  background: var(--kuning);
-}
-
-.mock-dots span:nth-child(3) {
-  background: #1E9E68;
-}
-
-.mock-lines span {
+.product .btn {
   display: block;
-  height: 10px;
-  margin-top: 14px;
-  border-radius: 6px;
-  background: rgba(255, 255, 255, 0.18);
+  text-align: center;
 }
 
-.mock-lines span:nth-child(1) { width: 70%; }
-.mock-lines span:nth-child(2) { width: 90%; }
-.mock-lines span:nth-child(3) { width: 55%; }
-.mock-lines span:nth-child(4) { width: 80%; }
+.step {
+  display: inline-grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  margin-bottom: var(--s2);
+  border-radius: 50%;
+  background: var(--utama);
+  color: #FFFFFF;
+  font-weight: 800;
+}
+```
 
+5. Lengkapi bagian ajakan (`.cta`) dan `footer`:
+
+```css
 .cta {
   margin: var(--s5) 0;
   padding: var(--s4) var(--s3);
@@ -256,17 +276,10 @@ footer {
 }
 ```
 
-5. Segarkan halaman dan perhatikan kartu muncul bergantian.
-6. Tekan `Tab` berulang kali di keyboard dan lihat garis kuning di tombol yang sedang fokus.
-7. **Tantangan:** ubah `--progress` pada tiap kartu kelas menjadi angka kalian sendiri.
+6. Tambahkan animasi `muncul` dari bagian **4.7**, lalu segarkan halaman dan perhatikan kartu muncul bergantian.
+7. Tekan `Tab` berulang kali di keyboard dan lihat garis kuning di tombol yang sedang fokus.
+8. **Tantangan:** ubah `--progress` pada tiap produk sesuai stok versi kalian sendiri.
 
 ---
 
-## 📝 Evaluasi Pemahaman
-
-Silakan asah pemahaman kalian dengan menjawab kuis ini:
-1. Mengapa efek hover sebaiknya memakai `transform`, bukan `margin`?
-2. Apa keunggulan `:focus-visible` dibanding `:focus`?
-3. Bagaimana `calc(var(--i) * 120ms)` membuat kartu muncul bergantian?
-
-Luar biasa! Halaman kalian sekarang terasa hidup. Di **Modul 5**, kita akan membuatnya nyaman di semua ukuran layar dan menambahkan **dark mode** hanya dengan mengganti nilai variabel. Sampai jumpa! 🎓
+Luar biasa! Toko kalian sekarang terasa hidup. Di **Modul 5**, kita akan membuatnya nyaman di semua ukuran layar dan menambahkan **dark mode** hanya dengan mengganti nilai variabel. Sampai jumpa! 🎓

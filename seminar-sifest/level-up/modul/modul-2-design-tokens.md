@@ -1,6 +1,6 @@
 # MODUL 2: Design Tokens & Tipografi
 
-Halo lagi, teman-teman! Kerangka HTML kita sudah jadi, tapi masih polos. Sebelum mendandani halaman, ada satu kebiasaan profesional yang akan menghemat banyak waktu: **mengumpulkan semua keputusan desain di satu tempat**. Di dunia desain, ini disebut **design tokens**, dan di CSS kita membuatnya dengan **CSS variables**.
+Halo lagi, teman-teman! Kerangka HTML toko kita sudah jadi, tapi masih polos. Sebelum mendandani halaman, ada satu kebiasaan profesional yang akan menghemat banyak waktu: **mengumpulkan semua keputusan desain di satu tempat**. Di dunia desain, ini disebut **design tokens**, dan di CSS kita membuatnya dengan **CSS variables**.
 
 ---
 
@@ -12,7 +12,7 @@ Setelah menyelesaikan modul ini, saya harap teman-teman bisa:
 3. Memakai variabel dengan fungsi `var()`.
 4. Memasang font dari Google Fonts.
 5. Membuat ukuran judul yang menyesuaikan layar memakai `clamp()`.
-6. **Goal Akhir:** Menyelesaikan bagian dasar `style.css` sehingga halaman CodeKelas punya font, warna, dan ritme jarak yang konsisten.
+6. **Goal Akhir:** Menyelesaikan bagian dasar `style.css` sehingga toko ThriftKita punya font, warna, dan ritme jarak yang konsisten.
 
 ---
 
@@ -20,7 +20,7 @@ Setelah menyelesaikan modul ini, saya harap teman-teman bisa:
 
 ### 2.1 Masalah Kalau Warna Ditulis Berulang
 
-Bayangkan warna biru merek kita `#1F4FD8` ditulis di 30 tempat. Suatu hari klien bilang, "Ganti jadi hijau ya!". Kalian harus mencari dan mengganti 30 tempat itu satu per satu, dan pasti ada yang terlewat.
+Bayangkan warna oranye merek toko kita `#C2410C` ditulis di 30 tempat. Suatu hari pemilik toko bilang, "Ganti jadi hijau ya!". Kalian harus mencari dan mengganti 30 tempat itu satu per satu, dan pasti ada yang terlewat.
 
 Solusinya: tulis warnanya **sekali**, beri **nama**, lalu pakai namanya di mana-mana.
 
@@ -28,14 +28,14 @@ Solusinya: tulis warnanya **sekali**, beri **nama**, lalu pakai namanya di mana-
 
 ```css
 :root {
-  --biru: #1F4FD8;
-  --kuning: #FFC83D;
-  --gelap: #0E1B3D;
-  --bg: #FAF8F4;
+  --utama: #C2410C;
+  --aksen: #FFC83D;
+  --gelap: #1F1A17;
+  --bg: #FAF6F0;
   --surface: #FFFFFF;
-  --text: #0E1B3D;
-  --muted: #5B6478;
-  --border: #E3DFD6;
+  --text: #1F1A17;
+  --muted: #6B625A;
+  --border: #E8E0D5;
 }
 ```
 
@@ -45,8 +45,8 @@ Aturan penulisannya:
 - Memakainya dengan `var(--nama)`.
 
 ```css
-h1 {
-  color: var(--biru);
+.eyebrow {
+  color: var(--utama);
 }
 ```
 
@@ -64,7 +64,7 @@ Bukan cuma warna. Kita juga membuat skala jarak supaya semua ruang kosong terasa
   --s3: 24px;
   --s4: 40px;
   --s5: 72px;
-  --shadow: 0 8px 24px rgba(14, 27, 61, 0.08);
+  --shadow: 0 8px 24px rgba(31, 26, 23, 0.1);
   color-scheme: light;
 }
 ```
@@ -98,7 +98,7 @@ body {
 
 ### 2.5 Reset Singkat dan Ukuran Judul dengan clamp()
 
-Dua baris reset yang wajib ada di hampir setiap proyek:
+Beberapa baris reset yang wajib ada di hampir setiap proyek:
 
 ```css
 *, *::before, *::after {
@@ -108,9 +108,22 @@ Dua baris reset yang wajib ada di hampir setiap proyek:
 html {
   scroll-behavior: smooth;
 }
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+}
 ```
 
-`box-sizing: border-box` membuat padding dan border dihitung **di dalam** lebar elemen, jadi ukuran kotak tidak membengkak. `scroll-behavior: smooth` membuat klik link menu meluncur halus ke bagian yang dituju.
+Penjelasannya:
+- `box-sizing: border-box` membuat padding dan border dihitung **di dalam** lebar elemen, jadi ukuran kotak tidak membengkak.
+- `scroll-behavior: smooth` membuat klik link menu meluncur halus ke bagian yang dituju.
+- `max-width: 100%` pada gambar mencegah foto produk melebihi lebar layar, penting sekali di HP.
+- `color: inherit` membuat link ikut mewarisi warna teks di sekitarnya, bukan biru bergaris bawah bawaan browser.
 
 Sekarang judul. Kita ingin judul besar di laptop dan lebih kecil di HP, **tanpa menulis media query**. Gunakan `clamp(minimum, ideal, maksimum)`:
 
@@ -142,17 +155,10 @@ Cara bacanya: ukuran `h1` akan mengikuti lebar layar (`5vw + 1rem`), tetapi **ti
 1. Di `index.html`, tambahkan tiga tag `link` font dari bagian **2.4** ke dalam `<head>`.
 2. Di `style.css`, tulis blok `:root` lengkap (bagian **2.2** dan **2.3**) di baris paling atas.
 3. Tulis reset, `body`, dan aturan judul dari bagian **2.4** dan **2.5**.
-4. Simpan dan lihat browser. Halaman kalian sekarang punya font baru, latar krem, dan teks yang nyaman dibaca.
-5. **Eksperimen:** ubah nilai `--biru` menjadi warna favoritmu, lalu pakai di `h1` dengan `color: var(--biru);`. Perhatikan betapa mudahnya satu perubahan berdampak ke seluruh halaman.
+4. Simpan dan lihat browser. Halaman kalian sekarang punya font baru, latar krem hangat, dan teks yang nyaman dibaca.
+5. **Eksperimen:** ubah nilai `--utama` menjadi warna favoritmu (misalnya hijau `#15803D`), lalu pakai di `.eyebrow` dengan `color: var(--utama);`. Perhatikan betapa mudahnya satu perubahan berdampak ke seluruh halaman.
 6. Buka DevTools (`F12`), pilih elemen `h1`, lalu perhatikan nilai `font-size` yang dihitung browser. Ubah lebar jendela browser dan lihat angkanya ikut berubah.
 
 ---
 
-## 📝 Evaluasi Pemahaman
-
-Silakan asah pemahaman kalian dengan menjawab kuis ini:
-1. Mengapa nama variabel seperti `--bg` dan `--text` lebih baik daripada `--krem` dan `--hitam`?
-2. Apa arti tiga nilai di dalam `clamp(2rem, 5vw + 1rem, 3.5rem)`?
-3. Mengapa kita menulis font cadangan setelah font utama?
-
-Mantap! Fondasi tampilan sudah rapi. Di **Modul 3**, kita akan menyusun tata letak halaman dengan **Flexbox** dan **CSS Grid**, termasuk trik grid yang otomatis menyesuaikan jumlah kolom. Sampai jumpa! 🎓
+Mantap! Fondasi tampilan sudah rapi. Di **Modul 3**, kita akan menata halaman dengan **Flexbox** dan **CSS Grid**, termasuk trik grid yang membuat deretan produk otomatis menyesuaikan jumlah kolom. Sampai jumpa! 🎓

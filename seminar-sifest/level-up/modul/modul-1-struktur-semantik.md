@@ -1,6 +1,6 @@
 # MODUL 1: Struktur Semantik & Persiapan Proyek
 
-Halo teman-teman! Selamat datang di course **Modern Web Landing Page**. Kalau di kelas dasar kalian sudah belajar HTML dan CSS lewat halaman profil sederhana, sekarang kita naik level: membangun **landing page bergaya startup** yang rapi, responsif, punya animasi halus, dan bahkan mendukung dark mode. Seru kan?
+Halo teman-teman! Selamat datang di course **Modern Web: Toko Online**. Di kelas dasar kalian sudah belajar HTML dan CSS lewat halaman profil. Sekarang kita naik level: membangun **toko online** yang rapi, responsif, punya animasi halus, dan bahkan mendukung dark mode. Seru kan?
 
 Semua dikerjakan **tanpa instalasi apa pun**. Cukup VS Code, browser, dan semangat belajar.
 
@@ -9,22 +9,20 @@ Semua dikerjakan **tanpa instalasi apa pun**. Cukup VS Code, browser, dan semang
 ## 🎯 Apa Saja yang Akan Kita Capai Hari Ini?
 
 Setelah menyelesaikan modul ini, saya harap teman-teman bisa:
-1. Membayangkan hasil akhir proyek **CodeKelas** yang akan kita bangun selama 6 modul.
+1. Membayangkan hasil akhir proyek **ThriftKita**, toko thrift fashion yang akan kita bangun selama 6 modul.
 2. Menyiapkan folder proyek dan menjalankannya dengan Live Server.
 3. Menulis kerangka dokumen HTML5 yang benar, lengkap dengan `meta description`.
 4. Menyusun halaman memakai tag semantik: `header`, `nav`, `main`, `section`, `article`, dan `footer`.
-5. Menjaga urutan judul (`h1`, `h2`, `h3`) agar halaman mudah dipahami.
-6. **Goal Akhir:** Menyelesaikan seluruh HTML landing page CodeKelas (belum bergaya, dan itu normal!).
+5. Menulis kartu produk lengkap dengan gambar, harga, dan tombol beli lewat WhatsApp.
+6. **Goal Akhir:** Menyelesaikan seluruh HTML toko ThriftKita (belum bergaya, dan itu normal!).
 
 ---
 
 ## 📚 Pembahasan Materi
 
-### 1.1 Apa Itu Landing Page?
+### 1.1 Rancangan Toko Kita
 
-Landing page adalah halaman pertama yang dilihat pengunjung. Tugasnya sederhana: **menjelaskan sesuatu dengan cepat, lalu mengajak pengunjung bertindak** (misalnya mendaftar kelas).
-
-Ini rancangan landing page **CodeKelas** yang akan kita bangun:
+Toko online yang baik membuat pengunjung cepat menemukan barang dan cepat membeli. Ini rancangan **ThriftKita** yang akan kita bangun:
 
 ┌────────────────────────────────┐
 │ 1. HEADER  logo + menu         │
@@ -33,30 +31,35 @@ Ini rancangan landing page **CodeKelas** yang akan kita bangun:
 ├────────────────────────────────┤
 │ 3. FITUR   [ ] [ ] [ ]         │
 ├────────────────────────────────┤
-│ 4. KELAS   [ ] [ ] [ ]         │
+│ 4. PRODUK  [ ] [ ] [ ] x 6     │
 ├────────────────────────────────┤
-│ 5. AJAKAN  tombol Mulai        │
+│ 5. CARA BELI  [ ] [ ] [ ]      │
 ├────────────────────────────────┤
-│ 6. FOOTER  hak cipta           │
+│ 6. KONTAK  tombol WhatsApp     │
+├────────────────────────────────┤
+│ 7. FOOTER  hak cipta           │
 └────────────────────────────────┘
 
-> Tips Dosen: Sebelum menulis kode, selalu gambar dulu rancangan kasarnya di kertas. Dengan begitu kalian tahu bagian apa saja yang harus ditulis, dan kode jadi lebih terarah.
+> Tips Dosen: Sebelum menulis kode, gambar dulu rancangan kasarnya di kertas. Dengan begitu kalian tahu bagian apa saja yang harus ditulis, dan kode jadi lebih terarah.
 
 ### 1.2 Siapkan Folder Proyek
 
-Buat folder baru bernama `landing-kelas`, lalu buka di VS Code lewat **File → Open Folder**. Di dalamnya, buat dua file:
+Buat folder baru bernama `thriftkita`, lalu buka di VS Code lewat **File → Open Folder**. Di dalamnya buat dua file dan satu folder gambar:
 
 ```text
-landing-kelas/
+thriftkita/
 ├── index.html
-└── style.css
+├── style.css
+└── img/
 ```
 
-Setelah itu klik kanan `index.html` dan pilih **Open with Live Server**. Mulai sekarang, setiap kali kalian menyimpan file (`Ctrl + S`), browser akan menyegarkan diri otomatis.
+Gambar produk bisa kalian ambil gratis dari [Unsplash](https://unsplash.com) (cari kata kunci seperti `denim jacket`, `tote bag`, `sneakers`). Simpan di folder `img`. Atau pakai foto barang kalian sendiri, itu lebih keren!
+
+Klik kanan `index.html` dan pilih **Open with Live Server**. Mulai sekarang, setiap kali menyimpan file (`Ctrl + S`), browser akan menyegarkan diri otomatis.
 
 ### 1.3 Kerangka Dokumen yang Benar
 
-Ketik `!` lalu tekan `Tab` di `index.html`, maka VS Code akan membuatkan kerangka dasar. Kita rapikan sedikit seperti ini:
+Ketik `!` lalu tekan `Tab` di `index.html`. VS Code akan membuatkan kerangka dasar. Kita rapikan seperti ini:
 
 ```html
 <!DOCTYPE html>
@@ -64,8 +67,8 @@ Ketik `!` lalu tekan `Tab` di `index.html`, maka VS Code akan membuatkan kerangk
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="CodeKelas: belajar coding dari nol sampai punya website sendiri.">
-  <title>CodeKelas | Belajar Coding dari Nol</title>
+  <meta name="description" content="ThriftKita: thrift fashion pilihan dengan harga pelajar.">
+  <title>ThriftKita | Thrift Fashion Harga Pelajar</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -92,63 +95,93 @@ Dulu orang menaruh semuanya di `<div>`. Sekarang kita pakai tag yang **punya mak
 | `nav` | Kumpulan link navigasi |
 | `main` | Isi utama halaman (hanya satu per halaman) |
 | `section` | Satu bagian bertema, biasanya diawali judul `h2` |
-| `article` | Satu unit konten yang berdiri sendiri, misalnya kartu |
+| `article` | Satu unit konten yang berdiri sendiri, misalnya satu kartu produk |
 | `footer` | Bagian bawah halaman |
 
-Kerangka body landing page kita:
+Kerangka body toko kita:
 
 ```html
 <body>
   <header class="site-header">
-    <a class="logo" href="#">CodeKelas</a>
+    <a class="logo" href="#">ThriftKita</a>
     <nav aria-label="Navigasi utama">
-      <a href="#fitur">Fitur</a>
-      <a href="#kelas">Kelas</a>
-      <a href="#mulai">Mulai</a>
+      <a href="#produk">Produk</a>
+      <a href="#cara-beli">Cara Beli</a>
+      <a href="#kontak">Kontak</a>
     </nav>
   </header>
 
   <main>
     <section class="hero"> ... </section>
     <section id="fitur" class="section"> ... </section>
-    <section id="kelas" class="section"> ... </section>
-    <section id="mulai" class="cta"> ... </section>
+    <section id="produk" class="section"> ... </section>
+    <section id="cara-beli" class="section"> ... </section>
+    <section id="kontak" class="cta"> ... </section>
   </main>
 
   <footer>
-    <p>© 2026 CodeKelas. Dibuat saat SI Fest 2026.</p>
+    <p>© 2026 ThriftKita. Dibuat saat SI Fest 2026.</p>
   </footer>
 </body>
 ```
 
-> Catatan Penting: Atribut `class` (misalnya `site-header`, `hero`) belum berefek apa-apa sekarang. Kita menyiapkannya sebagai "pegangan" untuk CSS di modul-modul berikutnya. Dan `id` seperti `fitur` dipakai agar link `href="#fitur"` bisa meloncat ke bagian itu.
+> Catatan Penting: Atribut `class` (misalnya `site-header`, `hero`) belum berefek apa-apa sekarang. Kita menyiapkannya sebagai "pegangan" untuk CSS di modul berikutnya. Dan `id` seperti `produk` dipakai agar link `href="#produk"` bisa meloncat ke bagian itu.
 
-### 1.5 Mengisi Konten dengan Urutan Judul yang Benar
+### 1.5 Bagian Hero
 
-Aturan emasnya: **satu `h1` per halaman**, lalu `h2` untuk tiap bagian, dan `h3` untuk judul di dalam kartu. Jangan lompat dari `h1` langsung ke `h4` hanya karena ingin teks yang lebih kecil. Ukuran urusan CSS, urutan adalah urusan makna.
-
-Contoh bagian hero dan satu kartu fitur:
+Hero adalah bagian pertama yang dilihat pengunjung: janji toko, ajakan belanja, dan satu gambar yang menarik.
 
 ```html
 <section class="hero">
   <div class="hero-text">
-    <p class="eyebrow">Belajar coding, versi ramah pemula</p>
-    <h1>Dari nol sampai punya website sendiri</h1>
-    <p class="lead">Kelas singkat, praktik langsung, dan hasil nyata.</p>
+    <p class="eyebrow">Thrift pilihan, harga pelajar</p>
+    <h1>Gaya keren tanpa bikin kantong bolong</h1>
+    <p class="lead">Baju, tas, dan sepatu preloved yang sudah dicek satu per satu.</p>
     <div class="actions">
-      <a class="btn btn-primary" href="#kelas">Lihat Kelas</a>
-      <a class="btn btn-ghost" href="#fitur">Pelajari Dulu</a>
+      <a class="btn btn-primary" href="#produk">Belanja Sekarang</a>
+      <a class="btn btn-ghost" href="#cara-beli">Cara Beli</a>
     </div>
   </div>
+  <img class="hero-img" src="img/hero-rak.jpg" alt="Deretan kaos berwarna-warni di rak pakaian" loading="lazy">
 </section>
+```
 
-<article class="card" style="--i: 0">
-  <h3>Praktik dulu</h3>
-  <p>Setiap materi langsung kamu ketik sendiri.</p>
+Aturan emasnya: **satu `h1` per halaman**, lalu `h2` untuk tiap bagian, dan `h3` untuk judul di dalam kartu. Jangan lompat dari `h1` langsung ke `h4` hanya karena ingin teks yang lebih kecil. Ukuran urusan CSS, urutan adalah urusan makna.
+
+> Peringatan Dosen: Jangan lupa atribut `alt` pada setiap gambar. Teks ini dibacakan pembaca layar untuk teman-teman tunanetra, dan tampil kalau gambar gagal dimuat. `alt` yang baik menjelaskan isi gambar, misalnya "Jaket denim vintage tergantung di dinding putih", bukan hanya "gambar1".
+
+### 1.6 Kartu Produk
+
+Inilah jantung toko online. Satu produk dibungkus satu `article`:
+
+```html
+<article class="card product" style="--i: 0">
+  <div class="thumb"><img src="img/jaket-denim.jpg" alt="Jaket denim vintage tergantung di dinding putih" loading="lazy"></div>
+  <span class="badge">Terlaris</span>
+  <h3>Jaket Denim Vintage</h3>
+  <p class="price">Rp145.000</p>
+  <div class="bar" style="--progress: 25%"><span></span></div>
+  <small class="stok">Sisa 1 pcs</small>
+  <a class="btn btn-primary" href="https://wa.me/628123456789?text=Halo%20ThriftKita%2C%20saya%20mau%20beli%20Jaket%20Denim%20Vintage">Beli via WhatsApp</a>
 </article>
 ```
 
-> Peringatan Dosen: Jangan memakai `<a>` untuk tombol yang menjalankan aksi di halaman, dan jangan memakai `<button>` untuk berpindah halaman. Link (`a`) untuk **pindah tempat**, tombol (`button`) untuk **melakukan sesuatu**. Di landing page ini semua "tombol" kita berpindah ke bagian lain, jadi kita pakai `a` dengan kelas `btn`.
+Beberapa hal menarik di sini:
+
+| Bagian | Penjelasan |
+|---|---|
+| `style="--i: 0"` | Nomor urut kartu. Dipakai di Modul 4 untuk animasi muncul bergantian |
+| `style="--progress: 25%"` | Seberapa penuh bar stok. Dipakai di Modul 4 |
+| `href="https://wa.me/..."` | Link WhatsApp. Angka setelah `wa.me/` adalah nomor penjual dengan awalan 62 (tanpa 0 dan tanpa tanda +) |
+| `?text=...` | Isi pesan yang otomatis terisi. Spasi ditulis `%20` |
+
+Untuk produk yang diskon, tambahkan harga lama dengan tag `<s>` (strikethrough, tulisan dicoret):
+
+```html
+<p class="price">Rp175.000 <s>Rp219.000</s></p>
+```
+
+> Tips Dosen: Ganti nomor `628123456789` dengan nomor WhatsApp kalian sendiri saat menguji. Dengan begitu tombol beli langsung membuka chat ke nomor kalian dan terasa seperti toko sungguhan.
 
 ---
 
@@ -156,22 +189,14 @@ Contoh bagian hero dan satu kartu fitur:
 
 Waktunya mengetik! Ikuti langkah ini:
 
-1. Pastikan folder `landing-kelas` sudah terbuka dan Live Server menyala.
+1. Pastikan folder `thriftkita` sudah terbuka dan Live Server menyala.
 2. Tulis kerangka dokumen dari bagian **1.3**.
 3. Isi `body` dengan kerangka semantik dari bagian **1.4**.
-4. Lengkapi isi `hero`, bagian `#fitur` (3 kartu), `#kelas` (3 kartu), dan `#mulai` sesuai rancangan di bagian 1.1.
-5. Isi `style="--i: 0"`, `--i: 1`, dan `--i: 2` pada tiga kartu tiap bagian. Angka ini akan terpakai di Modul 4 untuk animasi bergantian.
-6. Untuk tiga kartu kelas, tambahkan `<span class="badge">Pemula</span>` di atas judul, dan baris `<div class="bar" style="--progress: 80%"><span></span></div>` di bawah paragraf.
-7. Tambahkan blok `hero-visual` di sebelah teks hero (dipakai di Modul 3):
-
-```html
-<div class="hero-visual" aria-hidden="true">
-  <div class="mock">
-    <div class="mock-dots"><span></span><span></span><span></span></div>
-    <div class="mock-lines"><span></span><span></span><span></span><span></span></div>
-  </div>
-</div>
-```
+4. Tulis bagian hero dari bagian **1.5**. Simpan foto rak baju (atau foto pilihanmu) di folder `img`.
+5. Buat bagian `#fitur` berisi tiga kartu `article class="card"` dengan judul `h3` dan satu paragraf. Isi `style="--i: 0"`, `--i: 1`, dan `--i: 2` pada ketiganya.
+6. Buat bagian `#produk` berisi **enam** kartu produk memakai pola dari bagian **1.6**. Bungkus keenam kartu dengan `<div class="grid">`.
+7. Buat bagian `#cara-beli` berisi tiga kartu langkah. Setiap kartu diawali `<span class="step">1</span>`, lalu `h3` dan `p`.
+8. Buat bagian `#kontak` (judul, satu kalimat, dan tombol `Chat via WhatsApp`) serta `footer`.
 
 Hasil akhirnya akan terlihat **polos seperti halaman tahun 1995**. Itu benar! Kerangka yang baik harus tetap bisa dibaca tanpa CSS.
 
@@ -179,11 +204,4 @@ Hasil akhirnya akan terlihat **polos seperti halaman tahun 1995**. Itu benar! Ke
 
 ---
 
-## 📝 Evaluasi Pemahaman
-
-Silakan asah pemahaman kalian dengan menjawab kuis ini:
-1. Apa bedanya `section` dan `article`?
-2. Mengapa satu halaman sebaiknya hanya punya satu `h1`?
-3. Apa fungsi `lang="id"` di tag `html`?
-
-Hebat! Kerangka CodeKelas sudah berdiri. Di **Modul 2**, kita akan menyusun "bumbu dasar" tampilan: warna, jarak, dan tipografi dalam bentuk **design tokens** memakai CSS variables. Sampai jumpa! 🎓
+Hebat! Kerangka ThriftKita sudah berdiri. Di **Modul 2**, kita akan menyusun "bumbu dasar" tampilan: warna, jarak, dan tipografi dalam bentuk **design tokens** memakai CSS variables. Sampai jumpa! 🎓

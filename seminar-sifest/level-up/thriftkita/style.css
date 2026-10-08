@@ -1,20 +1,20 @@
 /* ===== 1. Design tokens ===== */
 :root {
-  --biru: #1F4FD8;
-  --kuning: #FFC83D;
-  --gelap: #0E1B3D;
-  --bg: #FAF8F4;
+  --utama: #C2410C;
+  --aksen: #FFC83D;
+  --gelap: #1F1A17;
+  --bg: #FAF6F0;
   --surface: #FFFFFF;
-  --text: #0E1B3D;
-  --muted: #5B6478;
-  --border: #E3DFD6;
+  --text: #1F1A17;
+  --muted: #6B625A;
+  --border: #E8E0D5;
   --radius: 16px;
   --s1: 8px;
   --s2: 16px;
   --s3: 24px;
   --s4: 40px;
   --s5: 72px;
-  --shadow: 0 8px 24px rgba(14, 27, 61, 0.08);
+  --shadow: 0 8px 24px rgba(31, 26, 23, 0.1);
   color-scheme: light;
 }
 
@@ -35,6 +35,15 @@ body {
   line-height: 1.6;
 }
 
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+}
+
 h1, h2, h3 {
   line-height: 1.15;
   margin: 0 0 var(--s2);
@@ -50,10 +59,6 @@ h2 {
 
 p {
   margin: 0 0 var(--s2);
-}
-
-a {
-  color: inherit;
 }
 
 /* ===== 3. Layout: Flexbox dan Grid ===== */
@@ -86,7 +91,7 @@ a {
 }
 
 .site-header nav a:hover {
-  color: var(--biru);
+  color: var(--utama);
 }
 
 main {
@@ -102,6 +107,14 @@ main {
   padding: var(--s5) 0 var(--s4);
 }
 
+.hero-img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
 .section {
   padding-top: var(--s5);
 }
@@ -109,12 +122,12 @@ main {
 .grid {
   display: grid;
   gap: var(--s3);
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
 }
 
 /* ===== 4. Komponen dan micro-interaction ===== */
 .eyebrow {
-  color: var(--biru);
+  color: var(--utama);
   font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -147,12 +160,12 @@ main {
 }
 
 .btn:focus-visible {
-  outline: 3px solid var(--kuning);
+  outline: 3px solid var(--aksen);
   outline-offset: 3px;
 }
 
 .btn-primary {
-  background: var(--biru);
+  background: var(--utama);
   color: #FFFFFF;
   box-shadow: var(--shadow);
 }
@@ -178,13 +191,41 @@ main {
 
 .badge {
   display: inline-block;
-  margin-bottom: var(--s2);
+  margin: var(--s2) 0 var(--s1);
   padding: 4px 12px;
   border-radius: 999px;
-  background: var(--kuning);
+  background: var(--aksen);
   color: var(--gelap);
   font-size: 0.75rem;
   font-weight: 800;
+}
+
+.thumb {
+  overflow: hidden;
+  border-radius: calc(var(--radius) - 4px);
+}
+
+.thumb img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.product:hover .thumb img {
+  transform: scale(1.05);
+}
+
+.price {
+  font-size: 1.25rem;
+  font-weight: 800;
+}
+
+.price s {
+  margin-left: var(--s1);
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-weight: 400;
 }
 
 .bar {
@@ -198,46 +239,31 @@ main {
   display: block;
   height: 100%;
   width: var(--progress, 0%);
-  background: var(--biru);
+  background: var(--utama);
 }
 
-.mock {
-  padding: var(--s3);
-  border-radius: var(--radius);
-  background: var(--gelap);
-  box-shadow: var(--shadow);
-  animation: melayang 6s ease-in-out infinite;
-}
-
-.mock-dots span {
-  display: inline-block;
-  width: 12px;
-  height: 12px;
-  margin-right: 6px;
-  border-radius: 50%;
-  background: #E63946;
-}
-
-.mock-dots span:nth-child(2) {
-  background: var(--kuning);
-}
-
-.mock-dots span:nth-child(3) {
-  background: #1E9E68;
-}
-
-.mock-lines span {
+.stok {
   display: block;
-  height: 10px;
-  margin-top: 14px;
-  border-radius: 6px;
-  background: rgba(255, 255, 255, 0.18);
+  margin: var(--s1) 0 var(--s2);
+  color: var(--muted);
 }
 
-.mock-lines span:nth-child(1) { width: 70%; }
-.mock-lines span:nth-child(2) { width: 90%; }
-.mock-lines span:nth-child(3) { width: 55%; }
-.mock-lines span:nth-child(4) { width: 80%; }
+.product .btn {
+  display: block;
+  text-align: center;
+}
+
+.step {
+  display: inline-grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  margin-bottom: var(--s2);
+  border-radius: 50%;
+  background: var(--utama);
+  color: #FFFFFF;
+  font-weight: 800;
+}
 
 .cta {
   margin: var(--s5) 0;
@@ -265,12 +291,6 @@ footer {
   }
 }
 
-@keyframes melayang {
-  50% {
-    transform: translateY(-10px);
-  }
-}
-
 /* ===== 5. Responsive (mobile-first) ===== */
 @media (min-width: 768px) {
   .hero {
@@ -281,27 +301,27 @@ footer {
 /* ===== 6. Dark mode dan aksesibilitas gerak ===== */
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #0A1330;
-    --surface: #17285A;
-    --text: #F4F6FB;
-    --muted: #A9B6D6;
-    --border: #2A3C6E;
-    --shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    --bg: #14110F;
+    --surface: #221D19;
+    --text: #F5EFE8;
+    --muted: #B9AEA2;
+    --border: #3A322B;
+    --shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
     color-scheme: dark;
   }
 
   .eyebrow,
   .site-header nav a:hover {
-    color: var(--kuning);
+    color: var(--aksen);
   }
 
   .btn-primary {
-    background: var(--kuning);
+    background: var(--aksen);
     color: var(--gelap);
   }
 
   .cta {
-    background: var(--biru);
+    background: var(--utama);
   }
 }
 
